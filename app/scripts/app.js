@@ -8,8 +8,7 @@
  *
  * Main module of the application.
  */
-angular
-  .module('toDoApp', [
+var app = angular.module('toDoApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -17,13 +16,40 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
-  .config(function ($routeProvider) {
+
+  app.config(function($routeProvider, $locationProvider) {
+    //get links working
+    $locationProvider.html5Mode(true);
+
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
+        templateUrl: '/partials/active.html',
         controller: 'MainCtrl'
       })
+
+      .when('/completed', {
+        templateUrl: '/partials/completed.html',
+        controller: 'MainCtrl'
+      })
+
+      .when('/expired', {
+        templateUrl: 'partials/expired.html',
+        controller: 'MainCtrl'
+      })
+
       .otherwise({
         redirectTo: '/'
       });
+  });
+
+  app.controller('MainCtrl', ['$scope', function($scope, $routeParams) {
+    $scope.name = 'MainCtrl';
+    $scope.params = $routeParams;
+  }])
+
+var myFirebaseRef = new Firebase("https://incandescent-torch-5461.firebaseio.com");
+  myFirebaseRef.on("value", function(snapshot) {
+    console.log(snapshot.val());
+  }, function (errorObject) {
+    console.log("The read failed: " + errorObject.code);
   });

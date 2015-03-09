@@ -17,33 +17,19 @@
     <!-- firebase integration -->
     <script src="https://cdn.firebase.com/js/client/2.2.2/firebase.js"></script>
     <!-- end firebase -->
+
+    <!-- set base url -->
+    <base href="/">
   </head>
   <body ng-app="toDoApp">
-
-    <div class="container">
+    <div class="big-view">
     <ul class="nav nav-pills">
-      <li role="presentation" class="active"><a href="#">Current</a></li>
-      <li role="presentation"><a href="#">Completed</a></li>
-      <li role="presentation"><a href="#">Expired</a></li>
+      <li role="presentation" class="active"><a href="/">Current</a></li>
+      <li role="presentation"><a href="completed">Completed</a></li>
+      <li role="presentation"><a href="expired">Expired</a></li>
     </ul>
     <div ng-view=""></div>
     
-    <container>
-      <!-- task table -->
-      <table class="table table-hover">
-        <h1>Current Tasks</h1>
-        <tr>
-          <td>Task</td>
-        </tr>
-        <tr>
-          <td>Task 2</td>
-        </tr>
-        <tr>
-          <td>Task 3</td>
-        </tr>
-      </table>
-    </container>
-
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
