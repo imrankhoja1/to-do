@@ -14,7 +14,8 @@ var app = angular.module('toDoApp', [
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'firebase'
   ])
 
   app.config(function($routeProvider, $locationProvider) {
@@ -42,14 +43,33 @@ var app = angular.module('toDoApp', [
       });
   });
 
-  app.controller('MainCtrl', ['$scope', function($scope, $routeParams) {
-    $scope.name = 'MainCtrl';
-    $scope.params = $routeParams;
+  app.controller('MainCtrl', ['$scope', 'DataProvider', function($scope, $routeProvider, DataProvider) {
+    $scope.priority = null;
+
+    $scope.setPriority = function (priority) {
+      console.log("Setting priority to ", priority);
+      $scope.priority = priority;
+    };
+
+    // $scope.addTask = function() {
+    //   $scope.tasks.add({
+    //     task: #scope.newTaskText
+    //   });
+    //   $scope.priority = null;
+    // };
   }])
 
-var myFirebaseRef = new Firebase("https://incandescent-torch-5461.firebaseio.com");
-  myFirebaseRef.on("value", function(snapshot) {
-    console.log(snapshot.val());
-  }, function (errorObject) {
-    console.log("The read failed: " + errorObject.code);
-  });
+  // define a service to pull in data from Firebase
+  app.service('DataProvider', function($rootScope, $firebaseArray) {
+    var ref = new Firebase("https://incandescent-torch-5461.firebaseio.com/test");
+
+    $rootScope.tasks = $firebaseArray(ref);
+
+    $rootScope.addTask = function() {
+      console.log('adding task');
+      $rootScope.tasks.add({
+        task: "hello",
+        priority: $rootScope.priority
+      });
+    };
+  })

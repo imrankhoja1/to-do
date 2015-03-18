@@ -1,3 +1,14 @@
-<img src="http://cdn.vectorstock.com/i/composite/21,25/completed-rubber-stamp-vector-1002125.jpg">
-
-<button ui-sref="/">Home</button>
+<container ng-controller="MainCtrl">
+  <div class='task-table'>
+  <!-- task table -->
+  <div class="table-responsive">
+  <table class="table table-hover">
+    <h1>Completed Tasks</h1>
+    <tr ng-repeat="task in tasks" class="completed">
+      <td>{{ task.task }}</td>
+    </tr>
+  </table>
+  <div>
+  </div>
+</div>
+</container>

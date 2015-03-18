@@ -1,16 +1,32 @@
-<div class='task-table'>
-<!-- task table -->
-<table class="table table-hover">
-  <h1>Current Tasks</h1>
-  <tr>
-    <td>Task</td>
-  </tr>
-  <tr>
-    <td>Task 2</td>
-  </tr>
-  <tr>
-    <td>Task 3</td>
-  </tr>
-</table>
-<div>
+<container ng-controller="MainCtrl">
+  <class='task-table'>
+  <!-- task table -->
+  <div class="table-responsive">
+  <table class="table table-hover">
+    <h1>Current Tasks</h1>
+    <tr class="table-labels">
+      <td>Task Description</td>
+      <td>Priority</td>
+      <td>Action</td>
+    </tr>
+    <tr class="add-task">
+      <td class='form-group'>
+        <input type='task' class='form-control' placeholder="Enter task here" ng-model="newTaskText">
+      </td>
+      <td class='priority'>
+        <button ng-class="{'selected': priority === 'low'}" ng-click="setPriority('low')" class="btn btn-info">Low</button>
+        <button ng-class="{'selected': priority === 'medium'}" ng-click="setPriority('medium')" class="btn btn-info">Medium</button>
+        <button ng-class="{'selected': priority === 'high'}" ng-click="setPriority('high')" class="btn btn-info">High</button>
+      </td>
+      <td><button ng-click="addTask()" class="btn btn-info">Add</button></td>
+    </tr>
+    <tr ng-repeat="task in tasks">
+      <td>{{ task.task }}</td>
+      <td></td>
+      <td><button class="btn btn-info">Complete</button></td>
+    </tr>
+  </table>
+  <div>
+  </div>
 </div>
+</container>

@@ -1,10 +1,19 @@
-.big-view {
-  position: absolute;
-  left: 400px;
-  top: 30px;
+.task-table {
+  background-color: #cccccc;
 }
 
-.task-table {
-  width: 450px;
-  background-color: #cccccc;
+.table-labels {
+  font-weight: 200;
+}
+
+.priority .btn-info {
+  border-radius: 0;
+}
+
+.selected {
+  background-color: green;
+}
+
+.completed {
+  text-decoration: line-through;
 }
