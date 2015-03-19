@@ -59,6 +59,12 @@ var app = angular.module('toDoApp', [
       });
       $scope.priority = null;
     };
+
+    $scope.markComplete = function() {
+      console.log($scope.task);
+      var taskToUpdate = $tasks.child(task)
+      console.log(taskToUpdate);
+    }
   }])
 
   // define a service to pull in data from Firebase

@@ -20,10 +20,10 @@
       </td>
       <td><button ng-click="addTask(newTaskText)" class="btn btn-info">Add</button></td>
     </tr>
-    <tr ng-repeat="task in tasks">
+    <tr ng-repeat="task in tasks" ng-if="task.completed === false">
       <td>{{ task.task }}</td>
-      <td></td>
-      <td><button class="btn btn-info">Complete</button></td>
+      <td><span class="label label-primary">{{ task.priority }}</span></td>
+      <td><button ng-click="markComplete(task)" class="btn btn-info">Complete</button></td>
     </tr>
   </table>
   <div>
