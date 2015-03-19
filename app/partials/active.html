@@ -18,7 +18,7 @@
         <button ng-class="{'selected': priority === 'medium'}" ng-click="setPriority('medium')" class="btn btn-info">Medium</button>
         <button ng-class="{'selected': priority === 'high'}" ng-click="setPriority('high')" class="btn btn-info">High</button>
       </td>
-      <td><button ng-click="addTask()" class="btn btn-info">Add</button></td>
+      <td><button ng-click="addTask(newTaskText)" class="btn btn-info">Add</button></td>
     </tr>
     <tr ng-repeat="task in tasks">
       <td>{{ task.task }}</td>

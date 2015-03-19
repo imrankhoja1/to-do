@@ -45,31 +45,24 @@ var app = angular.module('toDoApp', [
 
   app.controller('MainCtrl', ['$scope', 'DataProvider', function($scope, $routeProvider, DataProvider) {
     $scope.priority = null;
-
     $scope.setPriority = function (priority) {
       console.log("Setting priority to ", priority);
       $scope.priority = priority;
     };
 
-    // $scope.addTask = function() {
-    //   $scope.tasks.add({
-    //     task: #scope.newTaskText
-    //   });
-    //   $scope.priority = null;
-    // };
+    $scope.addTask = function() {
+      console.log('adding task');
+      $scope.tasks.$add({
+        task: $scope.newTaskText,
+        priority: $scope.priority,
+        completed: false
+      });
+      $scope.priority = null;
+    };
   }])
 
   // define a service to pull in data from Firebase
   app.service('DataProvider', function($rootScope, $firebaseArray) {
     var ref = new Firebase("https://incandescent-torch-5461.firebaseio.com/test");
-
     $rootScope.tasks = $firebaseArray(ref);
-
-    $rootScope.addTask = function() {
-      console.log('adding task');
-      $rootScope.tasks.add({
-        task: "hello",
-        priority: $rootScope.priority
-      });
-    };
   })
