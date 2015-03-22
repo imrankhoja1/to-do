@@ -60,10 +60,14 @@ var app = angular.module('toDoApp', [
       $scope.priority = null;
     };
 
-    $scope.markComplete = function() {
-      console.log($scope.task);
-      var taskToUpdate = $tasks.child(task)
-      console.log(taskToUpdate);
+    $scope.markComplete = function(task) {
+      // this prints the id of the specific task we want to mark complete
+      console.log(task.$id);
+      var ref = new Firebase("https://incandescent-torch-5461.firebaseio.com/test");
+      var taskRef = ref.child(task.$id);
+      taskRef.update({
+         completed: true
+       });
     }
   }])
 
