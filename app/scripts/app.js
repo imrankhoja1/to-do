@@ -55,7 +55,8 @@ var app = angular.module('toDoApp', [
       $scope.tasks.$add({
         task: $scope.newTaskText,
         priority: $scope.priority,
-        completed: false
+        completed: false,
+        created_at: Date()
       });
       $scope.priority = null;
     };

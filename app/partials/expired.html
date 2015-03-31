@@ -1,0 +1,14 @@
+<container ng-controller="MainCtrl">
+  <div class='task-table'>
+  <!-- task table -->
+  <div class="table-responsive">
+  <table class="table table-hover">
+    <h1>Completed Tasks</h1>
+    <tr ng-repeat="task in tasks" class="completed">
+      <td ng-if="task.completed === true">{{ task.task }}</td>
+    </tr>
+  </table>
+  <div>
+  </div>
+</div>
+</container>
